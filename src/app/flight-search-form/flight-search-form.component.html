@@ -1,0 +1,19 @@
+<div class="form-container">
+  <form>
+
+    <div class="form-group">
+
+      <input type="text" />
+
+      <div class="suggestions">
+        <ul>
+          <li *ngFor="let item of airports">
+            {{item.name}}
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </form>
+</div>
