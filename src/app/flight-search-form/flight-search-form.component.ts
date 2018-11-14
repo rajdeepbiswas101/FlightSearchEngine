@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { FlightSearchService } from '../services/flight-search.service';
 
 @Component({
@@ -7,7 +8,8 @@ import { FlightSearchService } from '../services/flight-search.service';
   styleUrls: ['./flight-search-form.component.css']
 })
 export class FlightSearchFormComponent implements OnInit {
-  airports;
+  airports: any;
+  flights: any;
 
   constructor(
     private flightSearchService: FlightSearchService
@@ -15,6 +17,7 @@ export class FlightSearchFormComponent implements OnInit {
 
   ngOnInit() {
     this.getAirportList();
+    this.getFlightList();
   }
 
   getAirportList() {
@@ -26,5 +29,20 @@ export class FlightSearchFormComponent implements OnInit {
       }
     )
   }
+
+  getFlightList() {
+    // this.flightSearchService.getFlightList().subscribe(
+    //   resp => {
+    //     this.flights = resp;
+    //   }, err => {
+
+    //   }
+    // )
+  }
+
+  Submit() {
+
+  }
+
 
 }

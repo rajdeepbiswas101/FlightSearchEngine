@@ -14,4 +14,8 @@ export class FlightSearchService {
     return this.http.get('../../assets/airports.json');
   }
 
+  getFlightList(){
+    return this.http.get('../../assets/flights.json');
+  }
+
 }

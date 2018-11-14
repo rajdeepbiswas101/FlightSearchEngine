@@ -12,20 +12,20 @@
     <div class="col-md-4">
       <div class="row">
         <div class="col-md-12 border-all">
-          <div class="tabbable" id="tabs-611331">
+          <div class="tabbable">
             <ul class="nav nav-tabs">
-              <li class="nav-item">
-                <a class="nav-link active" href="#tab1" data-toggle="tab">Section 1</a>
+              <li class="nav-item" (click)="switchTab(1)">
+                <a class="nav-link" [class.active]="activeTabNo === 1" data-toggle="tab">One Way</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#tab2" data-toggle="tab">Section 2</a>
+              <li class="nav-item" (click)="switchTab(2)">
+                <a class="nav-link" [class.active]="activeTabNo === 2" data-toggle="tab">Return</a>
               </li>
             </ul>
             <div class="tab-content">
-              <div class="tab-pane active" id="panel-392161">
-                <app-flight-search-form></app-flight-search-form>
+              <div class="tab-pane" [class.active]="activeTabNo === 1">
+                <app-flight-search-form (flightSearch)="displayFlightList($event)"></app-flight-search-form>
               </div>
-              <div class="tab-pane" id="tab2">
+              <div class="tab-pane" [class.active]="activeTabNo === 2">
                 <p>
                   Howdy, I'm in Section 2.
                 </p>
@@ -54,8 +54,123 @@
       </div>
     </div>
     <div class="col-md-8  border-top-right">
+      <div class="row border-bottom">
+        <div class="col-md-12">
+          asdf
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-12">
+
+          <div class="row flight-details">
+            <div class="col-md-12">
+
+              <div class="row">
+                <div class="col-md-8">
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p class="flight-price">Rs. 95000</p>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p class="flgt-name">AI-203</p>
+                      <p class="flgt-stn">PNQ > DEL</p>
+                      <p class="flgt-dptre">Depart: 03:03</p>
+                      <p class="flgt-arrive">Arrive: 03:03</p>
+                    </div>
+                    <div class="col-md-6">
+                      <p class="flgt-name">AI-203</p>
+                      <p class="flgt-stn">PNQ > DEL</p>
+                      <p class="flgt-dptre">Depart: 03:03</p>
+                      <p class="flgt-arrive">Arrive: 03:03</p>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-md-4">
+                  asdf
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row flight-details">
+            <div class="col-md-12">
+
+              <div class="row">
+                <div class="col-md-8">
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p class="flight-price">Rs. 95000</p>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p class="flgt-name">AI-203</p>
+                      <p class="flgt-stn">PNQ > DEL</p>
+                      <p class="flgt-dptre">Depart: 03:03</p>
+                      <p class="flgt-arrive">Arrive: 03:03</p>
+                    </div>
+                    <div class="col-md-6">
+                      <p class="flgt-name">AI-203</p>
+                      <p class="flgt-stn">PNQ > DEL</p>
+                      <p class="flgt-dptre">Depart: 03:03</p>
+                      <p class="flgt-arrive">Arrive: 03:03</p>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-md-4">
+                  asdf
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row flight-details" *ngFor="let rowObj of flights">
+            <div class="col-md-12">
+
+              <div class="row">
+                <div class="col-md-8">
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p class="flight-price">Rs. {{rowObj.price}}</p>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p class="flgt-name">{{rowObj.name}}</p>
+                      <p class="flgt-stn">PNQ > DEL</p>
+                      <p class="flgt-dptre">Depart: 03:03</p>
+                      <p class="flgt-arrive">Arrive: 03:03</p>
+                    </div>
+                    <div class="col-md-6">
+                      <p class="flgt-name">AI-203</p>
+                      <p class="flgt-stn">PNQ > DEL</p>
+                      <p class="flgt-dptre">Depart: 03:03</p>
+                      <p class="flgt-arrive">Arrive: 03:03</p>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-md-4">
+                  asdf
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>
