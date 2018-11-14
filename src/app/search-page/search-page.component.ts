@@ -9,7 +9,7 @@ import { EventEmitter } from 'events';
   styleUrls: ['./search-page.component.css']
 })
 export class SearchPageComponent implements OnInit {
-  @Output() flightSearch = new EventEmitter();
+  
 
   activeTabNo = 1;
 

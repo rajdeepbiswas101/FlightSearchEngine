@@ -1,24 +1,24 @@
 <div class="form-container">
-  <form>
+  <form (ngSubmit)="Submit()" [formGroup]="searchDetails">
 
     <div class="form-group">
-      <input list="airports" name="originAirports" placeholder="Enter Origin City">
+      <input list="airports" (onselect)="assignCityCode()" name="originAirports" formControlName="oCity" placeholder="Enter Origin City">
     </div>
 
     <div class="form-group">
-      <input list="airports" name="destinationAirports" placeholder="Enter Destination City">
+      <input list="airports" name="destinationAirports" formControlName="dCity" placeholder="Enter Destination City">
     </div>
 
     <div class="form-group">
-      <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="departDate" placeholder="Departure Date">
+      <input type="text" onfocus="(this.type='date')" formControlName="dDate" onblur="(this.type='text')" name="departDate" placeholder="Departure Date">
     </div>
 
     <div class="form-group">
-      <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="returnDate" placeholder="Return Date">
+      <input type="text" *ngIf="activeTab===2" onfocus="(this.type='date')" formControlName="rDate" onblur="(this.type='text')" name="returnDate" placeholder="Return Date">
     </div>
 
     <div class="form-group">
-      <select #passengers class="placeholder">
+      <select #passengers class="placeholder" formControlName="passenger">
         <option value="" hidden disabled selected>Passengers</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -33,7 +33,7 @@
     </div>
 
     <datalist id="airports">
-      <option *ngFor="let item of airports" value="{{item.name}} {{item.code}}">
+      <option *ngFor="let item of airports" (onselect)="assignCityCode()" value="{{item.code}}">{{item.name}}</option>
     </datalist>
 
   </form>

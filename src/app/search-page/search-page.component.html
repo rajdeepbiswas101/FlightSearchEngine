@@ -23,11 +23,11 @@
             </ul>
             <div class="tab-content">
               <div class="tab-pane" [class.active]="activeTabNo === 1">
-                <app-flight-search-form (flightSearch)="displayFlightList($event)"></app-flight-search-form>
+                <app-flight-search-form (flightSearch)="displayFlightList($event)" [activeTab]="activeTabNo"></app-flight-search-form>
               </div>
               <div class="tab-pane" [class.active]="activeTabNo === 2">
                 <p>
-                  Howdy, I'm in Section 2.
+                  <app-flight-search-form (flightSearch)="displayFlightList($event)" [activeTab]="activeTabNo"></app-flight-search-form>
                 </p>
               </div>
             </div>
