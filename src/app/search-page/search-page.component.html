@@ -186,7 +186,7 @@
                 <div *ngIf="forwardFly.airline === returnFly.airline">
                   <div *ngFor="let forwardItem of forwardFly.detail">
                     <div *ngFor="let returnItem of returnFly.detail">
-                      <div class="row flight-details" *ngIf="{{getPrice(forwardItem.price,returnItem.price) <= rangeValue}}">
+                      <div class="row flight-details" *ngIf="getPrice(forwardItem.price,returnItem.price) <= rangeValue">
                         <div class="col-md-12">
 
                           <div class="row">
@@ -230,7 +230,7 @@
           <ng-template #OneWay>
             <div *ngFor="let forwardFly of flightListWay1">
               <div *ngFor="let forwardItem of forwardFly.detail">
-                <div class="row flight-details">
+                <div class="row flight-details" *ngIf="getPrice(forwardItem.price) <= rangeValue">
                   <div class="col-md-12">
 
                     <div class="row">
