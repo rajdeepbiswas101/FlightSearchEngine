@@ -1,24 +1,24 @@
 <div class="container-fluid main-container">
   <div class="row">
-    <div class="col-md-12 border-all">
+    <div class="col-md-12 border-bottom">
       <div class="page-header">
-        <h1>
+        <h2>
           Flight Search Engine
-        </h1>
+        </h2>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-4">
       <div class="row">
-        <div class="col-md-12 border-all">
+        <div class="col-md-12 border-bottom">
           <div class="tabbable">
             <ul class="nav nav-tabs">
               <li class="nav-item" (click)="switchTab(1)">
-                <a class="nav-link" [class.active]="activeTabNo === 1" data-toggle="tab">One Way</a>
+                <a class="nav-link" [class.active]="activeTabNo === 1" data-toggle="tab"><b>One Way</b></a>
               </li>
               <li class="nav-item" (click)="switchTab(2)">
-                <a class="nav-link" [class.active]="activeTabNo === 2" data-toggle="tab">Return</a>
+                <a class="nav-link" [class.active]="activeTabNo === 2" data-toggle="tab"><b>Return</b></a>
               </li>
             </ul>
             <div class="tab-content">
@@ -34,35 +34,46 @@
           </div>
         </div>
       </div>
-      <div class="row border-all">
+      <div class="row">
         <div class="col-md-12 ">
           <div class="row">
             <div class="col-md-12 slider-title">
-              <span>Refine Flight Search</span>
+              <span><b>Refine Flight Search</b></span>
             </div>
           </div>
+          
           <div class="row slider">
             <div class="tab-lay">
               <div class="tab-cell left">0</div>
               <div class="tab-cell right">10000</div>
             </div>
             <div class="col-md-12">
-              <input type="range" min="" max="10000" value="10000" class="slider" id="costRange">
+              <input type="range" min="" max="10000" value="10000" #costRange [(ngModel)]="rangeValue" class="slider" id="costRange">
             </div>
+          </div>
+          <div class="row">
+              <p class="slider-title"><b>Rs.  {{rangeValue}}</b></p>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-8  border-top-right">
+    <div class="col-md-8  border-left">
       <div class="row border-bottom">
-        <div class="col-md-12">
-          asdf
+        <!-- <div class="col-md-12"> -->
+        <div class="col-md-6 places" *ngIf="searchInfo && searchInfo.isReturn == true">{{searchInfo.from}} >
+          {{searchInfo.to}} > {{searchInfo.from}}</div>
+        <div class="col-md-6 places" *ngIf="(searchInfo && searchInfo.isReturn == false)">{{searchInfo.from}} >
+          {{searchInfo.to}}</div>
+        <div class="col-md-6" *ngIf="searchInfo">
+          <div class="row col-md-12 timing">Depart: {{searchInfo.dDate | date}}</div>
+          <div class="row col-md-12 timing">Arrive: {{searchInfo.rDate | date}}</div>
         </div>
+        <!-- </div> -->
       </div>
       <div class="row">
         <div class="col-md-12">
 
-          <div class="row flight-details">
+          <!-- <div class="row flight-details">
             <div class="col-md-12">
 
               <div class="row">
@@ -132,9 +143,9 @@
               </div>
 
             </div>
-          </div>
+          </div> -->
 
-          <div class="row flight-details" *ngFor="let rowObj of flights">
+          <!-- <div class="row flight-details" *ngFor="let rowObj of flights">
             <div class="col-md-12">
 
               <div class="row">
@@ -168,8 +179,132 @@
               </div>
 
             </div>
-          </div>
+          </div> -->
+          <div *ngIf="searchInfo && searchInfo.isReturn == true; else OneWay">
+            <div *ngFor="let forwardFly of flightListWay1">
+              <div *ngFor="let returnFly of flightListWay2">
+                <div *ngIf="forwardFly.airline === returnFly.airline">
+                  <div *ngFor="let forwardItem of forwardFly.detail">
+                    <div *ngFor="let returnItem of returnFly.detail">
+                      <div class="row flight-details" *ngIf="{{getPrice(forwardItem.price,returnItem.price) <= rangeValue}}">
+                        <div class="col-md-12">
 
+                          <div class="row">
+                            <div class="col-md-8">
+
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <p class="flight-price">Rs. {{getPrice(forwardItem.price,returnItem.price)}}</p>
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <p class="flight-name">{{forwardFly.airline}}</p>
+                                  <p class="flight-det">{{forwardFly.from}} > {{forwardFly.to}}</p>
+                                  <p class="flight-det">Depart: {{forwardItem.departTime}}</p>
+                                  <p class="flight-det">Arrive: {{forwardItem.arriveTime}}</p>
+                                </div>
+                                <div class="col-md-6">
+                                  <p class="flight-name">{{returnFly.airline}}</p>
+                                  <p class="flight-det">{{returnFly.from}} > {{returnFly.to}}</p>
+                                  <p class="flight-det">Depart: {{returnItem.departTime}}</p>
+                                  <p class="flight-det">Arrive: {{returnItem.arriveTime}}</p>
+                                </div>
+                              </div>
+
+                            </div>
+                            <div class="col-md-4">
+                              asdf
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-template #OneWay>
+            <div *ngFor="let forwardFly of flightListWay1">
+              <div *ngFor="let forwardItem of forwardFly.detail">
+                <div class="row flight-details">
+                  <div class="col-md-12">
+
+                    <div class="row">
+                      <div class="col-md-8">
+
+                        <div class="row">
+                          <div class="col-md-12">
+                            <p class="flight-price">Rs. {{getPrice(forwardItem.price)}}</p>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-6">
+                            <p class="flight-name">{{forwardFly.airline}}</p>
+                            <p class="flight-det">{{forwardFly.from}} > {{forwardFly.to}}</p>
+                            <p class="flight-det">Depart: {{forwardItem.departTime}}</p>
+                            <p class="flight-det">Arrive: {{forwardItem.arriveTime}}</p>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="col-md-4">
+                        asdf
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+
+          <!-- <div class="row flight-details" *ngFor="let forwardFly of flightListWay1">
+            <div *ngFor="let returnFly of flightListWay2">
+              <div *ngIf="forwardFly.airline === returnFly.airline">
+                <div *ngFor="let forwardItem of forwardFly.detail">
+                  <div *ngFor="let returnItem of returnFly.detail">
+                    <div class="col-md-12">
+
+                      <div class="row">
+                        <div class="col-md-8">
+
+                          <div class="row">
+                            <div class="col-md-12">
+                              <p class="flight-price">Rs. {{forwardItem.price + returnItem.price}}</p>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-6">
+                              <p class="flgt-name">{{forwardItem.airline}}</p>
+                              <p class="flgt-stn">{{forwardItem.from}} > {{forwardItem.to}}</p>
+                              <p class="flgt-dptre">Depart: {{forwardItem.departTime}}</p>
+                              <p class="flgt-arrive">Arrive: {{forwardItem.arriveTime}}</p>
+                            </div>
+                            <div class="col-md-6">
+                              <p class="flgt-name">{{returnItem.airline}}</p>
+                              <p class="flgt-stn">{{returnItem.from}} > {{returnItem.to}}</p>
+                              <p class="flgt-dptre">Depart: {{returnItem.departTime}}</p>
+                              <p class="flgt-arrive">Arrive: {{returnItem.arriveTime}}</p>
+                            </div>
+                          </div>
+
+                        </div>
+                        <div class="col-md-4">
+                          Image of flight
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
 
         </div>
       </div>

@@ -7,7 +7,7 @@
     margin: 10px 0;
 } */
 .main-container {
-  border-bottom: 2px solid !important;
+  border: 2px solid !important;
 }
 
 .border-all {
@@ -65,15 +65,38 @@
 }
 
 .flight-details {
-    margin: 20px 10px;
-    border: 2px solid #ddd;
+  margin: 20px 10px;
+  border: 2px solid #ddd;
 }
 
 p.flight-price {
-    font-size: 20px;
-    font-weight: 700;
+  font-size: 25px;
+  font-weight: 700;
 }
 
+.places {
+  font-size: 30px;
+  font-weight: 800;
+  text-align: left
+}
+
+.timing {
+  font-weight: bold;
+}
+
+h2{
+  font-size: 50px;
+}
+
+.flight-det{
+  font-weight: 650;
+}
+/* .timing .row {
+  text-align: right
+} */
+.border-left{
+  border-left: 2px solid;
+}
 @media (max-width: 700px) {
   .border-top-right {
     border-left: 2px solid;

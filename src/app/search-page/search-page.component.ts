@@ -10,10 +10,15 @@ import { EventEmitter } from 'events';
 })
 export class SearchPageComponent implements OnInit {
   
-
   activeTabNo = 1;
+  searchInfo: any[];
+  flightListWay1: any[];
+  flightListWay2: any[];
+  rangeValue: number;
 
-  constructor() { }
+  constructor() { 
+    this.rangeValue = 10000;
+  }
 
   ngOnInit() {
   }
@@ -22,14 +27,26 @@ export class SearchPageComponent implements OnInit {
     switch (key) {
       case 1:
         this.activeTabNo = 1;
+        this.rangeValue = 10000;
         break;
       case 2:
         this.activeTabNo = 2;
+        this.rangeValue = 10000;
         break;
 
       default:
         break;
     }
+  }
+
+  displayFlightList(event: any){
+    this.searchInfo = event[0]
+    this.flightListWay1 = event[1];
+    this.flightListWay2 = event[2];
+  }
+
+  getPrice(price1:string, price2:string = "0"){
+    return parseInt(price1) + parseInt(price2);
   }
 
 }

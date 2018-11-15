@@ -1,7 +1,9 @@
-import { Component, OnInit, Output, Input } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { FlightSearchService } from '../services/flight-search.service';
-import { EventEmitter } from 'events';
+import { map, filter } from 'rxjs/operators';
+import { forEach } from '@angular/router/src/utils/collection';
+
 
 @Component({
   selector: 'app-flight-search-form',
@@ -12,20 +14,24 @@ export class FlightSearchFormComponent implements OnInit {
   private _activeTab: number;
   searchDetails: FormGroup;
   @Input()
-  set activeTab(val: number){
+  set activeTab(val: number) {
     this._activeTab = val;
+    // this.searchDetails.reset();
   }
-  get activeTab(){
+  get activeTab() {
     return this._activeTab;
   }
-  //@Output() flightSearch = new EventEmitter();
+  @Output() flightSearch = new EventEmitter<any>();
   airports: any;
   flights: any;
+  flightList: any[];
+  flightListWay1: any[];
+  flightListWay2: any[];
 
   constructor(
     private flightSearchService: FlightSearchService,
     private formBuilder: FormBuilder
-  ) { 
+  ) {
     this.initForm();
     //this.searchDetails.reset();
   }
@@ -46,20 +52,50 @@ export class FlightSearchFormComponent implements OnInit {
   }
 
   getFlightList() {
-    // this.flightSearchService.getFlightList().subscribe(
-    //   resp => {
-    //     this.flights = resp;
-    //   }, err => {
+    this.flightSearchService.getFlightList().subscribe(
+      resp => {
+        this.flights = JSON.parse(JSON.stringify(resp));
+      }, err => {
 
-    //   }
-    // )
+      }
+    )
   }
 
   Submit() {
-    console.log(this.searchDetails);
+    this.flightListWay1 = this.makeFlightList(this.searchDetails.controls['oCity'].value, this.searchDetails.controls['dCity'].value, this.searchDetails.controls['dDate'].value);
+    if (this.activeTab === 2) {
+      this.flightListWay2 = this.makeFlightList(this.searchDetails.controls['dCity'].value, this.searchDetails.controls['oCity'].value, this.searchDetails.controls['rDate'].value);
+    } else {
+      this.flightListWay2 = [];
+    }
+    let searchInfo = {
+      from: this.searchDetails.controls['oCity'].value,
+      to: this.searchDetails.controls['dCity'].value,
+      dDate: this.searchDetails.controls['dDate'].value,
+      rDate: this.searchDetails.controls['rDate'].value,
+      isReturn: this.activeTab === 2 ? true : false
+    };
+    let emitdata = [];
+    emitdata.push(searchInfo);
+    emitdata.push(this.flightListWay1);
+    emitdata.push(this.flightListWay2);
+    this.flightSearch.emit(emitdata);
+    console.log(this.flightListWay1);
+    console.log(this.flightListWay2);
   }
 
-  initForm(){
+  makeFlightList(origin: string, destination: string, date: string) {
+    this.getFlightList();
+    this.flightList = this.flights.data;
+    let flightListTemp = this.flightList.filter(flight => (flight.from === origin) && (flight.to === destination));
+    for (let item of flightListTemp) {
+      item.detail = item.detail.filter(x => x.date === date);
+    }
+    flightListTemp = flightListTemp.filter(item => item.detail.length > 0);
+    return flightListTemp;
+  }
+
+  initForm() {
     this.searchDetails = this.formBuilder.group({
       oCity: [''],
       dCity: [''],
@@ -68,7 +104,7 @@ export class FlightSearchFormComponent implements OnInit {
       passenger: ['']
     })
   }
-  assignCityCode(){
+  assignCityCode() {
     console.log("Works");
   }
 
