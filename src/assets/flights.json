@@ -1,7 +1,7 @@
 {
 	"data": [{
 		"airline": "Airindia 737",
-		"imgURL": "http://www.newsread.in/wp-content/uploads/2015/07/Air-India-Logo-480x470.jpg",
+		"imgURL": "https://cdn.dribbble.com/users/1867748/screenshots/4296757/air_india_02.jpg",
 		"from": "BLR",
 		"to": "DEL",
 		"detail": [{
@@ -25,7 +25,7 @@
 		}]
 	}, {
 		"airline": "Airindia 737",
-		"imgURL": "http://www.newsread.in/wp-content/uploads/2015/07/Air-India-Logo-480x470.jpg",
+		"imgURL": "https://cdn.dribbble.com/users/1867748/screenshots/4296757/air_india_02.jpg",
 		"from": "DEL",
 		"to": "BLR",
 		"detail": [{
@@ -49,7 +49,7 @@
 		}]
 	}, {
 		"airline": "Indigo Airbus",
-		"imgURL": "https://upload.wikimedia.org/wikipedia/en/9/93/IndiGo_Logo.jpg",
+		"imgURL": "https://upload.wikimedia.org/wikipedia/en/thumb/1/1f/IndiGo_logo.svg/200px-IndiGo_logo.svg.png",
 		"from": "BLR",
 		"to": "DEL",
 		"detail": [{
@@ -73,7 +73,7 @@
 		}]
 	}, {
 		"airline": "Indigo Airbus",
-		"imgURL": "https://upload.wikimedia.org/wikipedia/en/9/93/IndiGo_Logo.jpg",
+		"imgURL": "https://upload.wikimedia.org/wikipedia/en/thumb/1/1f/IndiGo_logo.svg/200px-IndiGo_logo.svg.png",
 		"from": "DEL",
 		"to": "BLR",
 		"detail": [{

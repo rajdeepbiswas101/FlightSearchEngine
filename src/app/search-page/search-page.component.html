@@ -41,18 +41,19 @@
               <span><b>Refine Flight Search</b></span>
             </div>
           </div>
-          
+
           <div class="row slider">
             <div class="tab-lay">
               <div class="tab-cell left">0</div>
               <div class="tab-cell right">10000</div>
             </div>
             <div class="col-md-12">
-              <input type="range" min="" max="10000" value="10000" #costRange [(ngModel)]="rangeValue" class="slider" id="costRange">
+              <input type="range" min="" max="10000" value="10000" #costRange [(ngModel)]="rangeValue" class="slider"
+                id="costRange">
             </div>
           </div>
           <div class="row">
-              <p class="slider-title"><b>Rs.  {{rangeValue}}</b></p>
+            <p class="slider-title"><b>Rs. {{rangeValue}}</b></p>
           </div>
         </div>
       </div>
@@ -215,7 +216,7 @@
 
                             </div>
                             <div class="col-md-4">
-                              asdf
+                              <img src="{{forwardFly.imgURL}}" alt="Image">
                             </div>
                           </div>
 
@@ -253,7 +254,8 @@
 
                       </div>
                       <div class="col-md-4">
-                        asdf
+                        <div class="row"><img src="{{forwardFly.imgURL}}" alt="Image"></div>
+                        <div class="row"><button>Book this Flight</button></div>
                       </div>
                     </div>
                   </div>

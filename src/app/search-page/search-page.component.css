@@ -8,6 +8,7 @@
 } */
 .main-container {
   border: 2px solid !important;
+  border-collapse: collapse !important;
 }
 
 .border-all {
@@ -96,7 +97,19 @@ h2{
 } */
 .border-left{
   border-left: 2px solid;
+  border-collapse: collapse;
 }
+
+img{
+  display: block;
+  height: 150px;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  align-content: center;
+}
+
 @media (max-width: 700px) {
   .border-top-right {
     border-left: 2px solid;
