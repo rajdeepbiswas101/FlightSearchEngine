@@ -85,22 +85,23 @@ p.flight-price {
   font-weight: bold;
 }
 
-h2{
+h2 {
   font-size: 50px;
 }
 
-.flight-det{
+.flight-det {
   font-weight: 650;
 }
+
 /* .timing .row {
   text-align: right
 } */
-.border-left{
+.border-left {
   border-left: 2px solid;
   border-collapse: collapse;
 }
 
-img{
+img {
   display: block;
   height: 150px;
   width: 150px;
@@ -110,12 +111,23 @@ img{
   align-content: center;
 }
 
-.row button{
+.row button {
   width: 100%;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
+
+p {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 30px;
+}
+
+h1 {
+  padding: 30px;
+}
+
 @media (max-width: 700px) {
   .border-top-right {
     border-left: 2px solid;

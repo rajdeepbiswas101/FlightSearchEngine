@@ -59,168 +59,115 @@
       </div>
     </div>
     <div class="col-md-8  border-left">
-      <div class="row border-bottom">
+      <div class="row border-bottom" *ngIf="searchInfo && searchInfo.isReturn == true">
+        <div class="col-md-6 places">{{searchInfo.from}} >
+          {{searchInfo.to}} > {{searchInfo.from}}</div>
+        <div class="col-md-6">
+          <div class="row col-md-12 timing">Depart: {{searchInfo.dDate | date}}</div>
+          <div class="row col-md-12 timing">Return: {{searchInfo.rDate | date}}</div>
+        </div>
         <!-- <div class="col-md-12"> -->
-        <div class="col-md-6 places" *ngIf="searchInfo && searchInfo.isReturn == true">{{searchInfo.from}} >
+        <!-- <div class="col-md-6 places" *ngIf="searchInfo && searchInfo.isReturn == true">{{searchInfo.from}} >
           {{searchInfo.to}} > {{searchInfo.from}}</div>
         <div class="col-md-6 places" *ngIf="(searchInfo && searchInfo.isReturn == false)">{{searchInfo.from}} >
           {{searchInfo.to}}</div>
         <div class="col-md-6" *ngIf="searchInfo">
           <div class="row col-md-12 timing">Depart: {{searchInfo.dDate | date}}</div>
-          <div class="row col-md-12 timing">Arrive: {{searchInfo.rDate | date}}</div>
+          <div class="row col-md-12 timing">Return: {{searchInfo.rDate | date}}</div>
+        </div> -->
+        <!-- <div *ngIf="searchInfo && searchInfo.isReturn == true">
+          <div class="col-md-6 places">{{searchInfo.from}} >
+            {{searchInfo.to}} > {{searchInfo.from}}</div>
+          <div class="col-md-6">
+            <div class="row col-md-12 timing">Depart: {{searchInfo.dDate | date}}</div>
+            <div class="row col-md-12 timing">Return: {{searchInfo.rDate | date}}</div>
+          </div>
         </div>
+        <div *ngIf="searchInfo && searchInfo.isReturn == false">
+            <div class="col-md-6 places">{{searchInfo.from}} >
+              {{searchInfo.to}}</div>
+            <div class="col-md-6">
+              <div class="row col-md-12 timing">Depart: {{searchInfo.dDate | date}}</div>
+            </div>
+          </div> -->
+        <!-- </div> -->
+      </div>
+      <div class="row border-bottom" *ngIf="searchInfo && searchInfo.isReturn == false">
+        <div class="col-md-6 places">{{searchInfo.from}} >
+          {{searchInfo.to}}</div>
+        <div class="col-md-6">
+          <div class="row col-md-12 timing">Depart: {{searchInfo.dDate | date}}</div>
+        </div>
+        <!-- <div class="col-md-12"> -->
+        <!-- <div class="col-md-6 places" *ngIf="searchInfo && searchInfo.isReturn == true">{{searchInfo.from}} >
+            {{searchInfo.to}} > {{searchInfo.from}}</div>
+          <div class="col-md-6 places" *ngIf="(searchInfo && searchInfo.isReturn == false)">{{searchInfo.from}} >
+            {{searchInfo.to}}</div>
+          <div class="col-md-6" *ngIf="searchInfo">
+            <div class="row col-md-12 timing">Depart: {{searchInfo.dDate | date}}</div>
+            <div class="row col-md-12 timing">Return: {{searchInfo.rDate | date}}</div>
+          </div> -->
+        <!-- <div *ngIf="searchInfo && searchInfo.isReturn == true">
+            <div class="col-md-6 places">{{searchInfo.from}} >
+              {{searchInfo.to}} > {{searchInfo.from}}</div>
+            <div class="col-md-6">
+              <div class="row col-md-12 timing">Depart: {{searchInfo.dDate | date}}</div>
+              <div class="row col-md-12 timing">Return: {{searchInfo.rDate | date}}</div>
+            </div>
+          </div>
+          <div *ngIf="searchInfo && searchInfo.isReturn == false">
+              <div class="col-md-6 places">{{searchInfo.from}} >
+                {{searchInfo.to}}</div>
+              <div class="col-md-6">
+                <div class="row col-md-12 timing">Depart: {{searchInfo.dDate | date}}</div>
+              </div>
+            </div> -->
         <!-- </div> -->
       </div>
       <div class="row">
         <div class="col-md-12">
-
-          <!-- <div class="row flight-details">
-            <div class="col-md-12">
-
-              <div class="row">
-                <div class="col-md-8">
-
-                  <div class="row">
-                    <div class="col-md-12">
-                      <p class="flight-price">Rs. 95000</p>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-6">
-                      <p class="flgt-name">AI-203</p>
-                      <p class="flgt-stn">PNQ > DEL</p>
-                      <p class="flgt-dptre">Depart: 03:03</p>
-                      <p class="flgt-arrive">Arrive: 03:03</p>
-                    </div>
-                    <div class="col-md-6">
-                      <p class="flgt-name">AI-203</p>
-                      <p class="flgt-stn">PNQ > DEL</p>
-                      <p class="flgt-dptre">Depart: 03:03</p>
-                      <p class="flgt-arrive">Arrive: 03:03</p>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="col-md-4">
-                  asdf
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="row flight-details">
-            <div class="col-md-12">
-
-              <div class="row">
-                <div class="col-md-8">
-
-                  <div class="row">
-                    <div class="col-md-12">
-                      <p class="flight-price">Rs. 95000</p>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-6">
-                      <p class="flgt-name">AI-203</p>
-                      <p class="flgt-stn">PNQ > DEL</p>
-                      <p class="flgt-dptre">Depart: 03:03</p>
-                      <p class="flgt-arrive">Arrive: 03:03</p>
-                    </div>
-                    <div class="col-md-6">
-                      <p class="flgt-name">AI-203</p>
-                      <p class="flgt-stn">PNQ > DEL</p>
-                      <p class="flgt-dptre">Depart: 03:03</p>
-                      <p class="flgt-arrive">Arrive: 03:03</p>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="col-md-4">
-                  asdf
-                </div>
-              </div>
-
-            </div>
-          </div> -->
-
-          <!-- <div class="row flight-details" *ngFor="let rowObj of flights">
-            <div class="col-md-12">
-
-              <div class="row">
-                <div class="col-md-8">
-
-                  <div class="row">
-                    <div class="col-md-12">
-                      <p class="flight-price">Rs. {{rowObj.price}}</p>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-6">
-                      <p class="flgt-name">{{rowObj.name}}</p>
-                      <p class="flgt-stn">PNQ > DEL</p>
-                      <p class="flgt-dptre">Depart: 03:03</p>
-                      <p class="flgt-arrive">Arrive: 03:03</p>
-                    </div>
-                    <div class="col-md-6">
-                      <p class="flgt-name">AI-203</p>
-                      <p class="flgt-stn">PNQ > DEL</p>
-                      <p class="flgt-dptre">Depart: 03:03</p>
-                      <p class="flgt-arrive">Arrive: 03:03</p>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="col-md-4">
-                  asdf
-                </div>
-              </div>
-
-            </div>
-          </div> -->
           <div *ngIf="searchInfo && searchInfo.isReturn == true; else OneWay">
-            <div *ngFor="let forwardFly of flightListWay1">
-              <div *ngFor="let returnFly of flightListWay2">
-                <div *ngIf="forwardFly.airline === returnFly.airline">
-                  <div *ngFor="let forwardItem of forwardFly.detail">
-                    <div *ngFor="let returnItem of returnFly.detail">
-                      <div class="row flight-details" *ngIf="getPrice(forwardItem.price,returnItem.price) <= rangeValue">
-                        <div class="col-md-12">
+            <div *ngIf="flightListWay2; else Welcome">
+              <div *ngFor="let forwardFly of flightListWay1">
+                <div *ngFor="let returnFly of flightListWay2">
+                  <div *ngIf="forwardFly.airline === returnFly.airline">
+                    <div *ngFor="let forwardItem of forwardFly.detail">
+                      <div *ngFor="let returnItem of returnFly.detail">
+                        <div class="row flight-details" *ngIf="getPrice(forwardItem.price,returnItem.price) <= rangeValue">
+                          <div class="col-md-12">
 
-                          <div class="row">
-                            <div class="col-md-8">
+                            <div class="row">
+                              <div class="col-md-8">
 
-                              <div class="row">
-                                <div class="col-md-12">
-                                  <p class="flight-price">Rs. {{getPrice(forwardItem.price,returnItem.price)}}</p>
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <p class="flight-price">Rs. {{getPrice(forwardItem.price,returnItem.price)}}</p>
+                                  </div>
                                 </div>
+
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <p class="flight-name">{{forwardFly.airline}}</p>
+                                    <p class="flight-det">{{forwardFly.from}} > {{forwardFly.to}}</p>
+                                    <p class="flight-det">Depart: {{forwardItem.departTime}}</p>
+                                    <p class="flight-det">Arrive: {{forwardItem.arriveTime}}</p>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <p class="flight-name">{{returnFly.airline}}</p>
+                                    <p class="flight-det">{{returnFly.from}} > {{returnFly.to}}</p>
+                                    <p class="flight-det">Depart: {{returnItem.departTime}}</p>
+                                    <p class="flight-det">Arrive: {{returnItem.arriveTime}}</p>
+                                  </div>
+                                </div>
+
                               </div>
-
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <p class="flight-name">{{forwardFly.airline}}</p>
-                                  <p class="flight-det">{{forwardFly.from}} > {{forwardFly.to}}</p>
-                                  <p class="flight-det">Depart: {{forwardItem.departTime}}</p>
-                                  <p class="flight-det">Arrive: {{forwardItem.arriveTime}}</p>
-                                </div>
-                                <div class="col-md-6">
-                                  <p class="flight-name">{{returnFly.airline}}</p>
-                                  <p class="flight-det">{{returnFly.from}} > {{returnFly.to}}</p>
-                                  <p class="flight-det">Depart: {{returnItem.departTime}}</p>
-                                  <p class="flight-det">Arrive: {{returnItem.arriveTime}}</p>
-                                </div>
-                              </div>
-
-                            </div>
-                            <div class="col-md-4 ">
+                              <div class="col-md-4 ">
                                 <div class="row page-header"><img src="{{forwardFly.imgURL}}" alt="Image"></div>
                                 <div class="row page-header"><button>Book this Flight</button></div>
                               </div>
-                          </div>
+                            </div>
 
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -228,87 +175,55 @@
                 </div>
               </div>
             </div>
+            <ng-container *ngTemplateOutlet = "NoFlightsFound"></ng-container>
+            <!-- <NoFlightsFound *ngIf="isPresent==false"></NoFlightsFound> -->
           </div>
           <ng-template #OneWay>
-            <div *ngFor="let forwardFly of flightListWay1">
-              <div *ngFor="let forwardItem of forwardFly.detail">
-                <div class="row flight-details" *ngIf="getPrice(forwardItem.price) <= rangeValue">
-                  <div class="col-md-12">
-
-                    <div class="row">
-                      <div class="col-md-8">
-
-                        <div class="row">
-                          <div class="col-md-12">
-                            <p class="flight-price">Rs. {{getPrice(forwardItem.price)}}</p>
-                          </div>
-                        </div>
+            <div *ngIf="flightListWay1; else Welcome">
+              <div *ngIf="flightListWay1.length > 0; else NoFlightsFound">
+                <div *ngFor="let forwardFly of flightListWay1">
+                  <div *ngFor="let forwardItem of forwardFly.detail">
+                    <div class="row flight-details" *ngIf="getPrice(forwardItem.price) <= rangeValue">
+                      <div class="col-md-12">
 
                         <div class="row">
-                          <div class="col-md-6">
-                            <p class="flight-name">{{forwardFly.airline}}</p>
-                            <p class="flight-det">{{forwardFly.from}} > {{forwardFly.to}}</p>
-                            <p class="flight-det">Depart: {{forwardItem.departTime}}</p>
-                            <p class="flight-det">Arrive: {{forwardItem.arriveTime}}</p>
+                          <div class="col-md-8">
+
+                            <div class="row">
+                              <div class="col-md-12">
+                                <p class="flight-price">Rs. {{getPrice(forwardItem.price)}}</p>
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6">
+                                <p class="flight-name">{{forwardFly.airline}}</p>
+                                <p class="flight-det">{{forwardFly.from}} > {{forwardFly.to}}</p>
+                                <p class="flight-det">Depart: {{forwardItem.departTime}}</p>
+                                <p class="flight-det">Arrive: {{forwardItem.arriveTime}}</p>
+                              </div>
+                            </div>
+
+                          </div>
+                          <div class="col-md-4 ">
+                            <div class="row page-header"><img src="{{forwardFly.imgURL}}" alt="Image"></div>
+                            <div class="row page-header"><button>Book this Flight</button></div>
                           </div>
                         </div>
-
-                      </div>
-                      <div class="col-md-4 ">
-                        <div class="row page-header"><img src="{{forwardFly.imgURL}}" alt="Image"></div>
-                        <div class="row page-header"><button>Book this Flight</button></div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
           </ng-template>
-
-          <!-- <div class="row flight-details" *ngFor="let forwardFly of flightListWay1">
-            <div *ngFor="let returnFly of flightListWay2">
-              <div *ngIf="forwardFly.airline === returnFly.airline">
-                <div *ngFor="let forwardItem of forwardFly.detail">
-                  <div *ngFor="let returnItem of returnFly.detail">
-                    <div class="col-md-12">
-
-                      <div class="row">
-                        <div class="col-md-8">
-
-                          <div class="row">
-                            <div class="col-md-12">
-                              <p class="flight-price">Rs. {{forwardItem.price + returnItem.price}}</p>
-                            </div>
-                          </div>
-
-                          <div class="row">
-                            <div class="col-md-6">
-                              <p class="flgt-name">{{forwardItem.airline}}</p>
-                              <p class="flgt-stn">{{forwardItem.from}} > {{forwardItem.to}}</p>
-                              <p class="flgt-dptre">Depart: {{forwardItem.departTime}}</p>
-                              <p class="flgt-arrive">Arrive: {{forwardItem.arriveTime}}</p>
-                            </div>
-                            <div class="col-md-6">
-                              <p class="flgt-name">{{returnItem.airline}}</p>
-                              <p class="flgt-stn">{{returnItem.from}} > {{returnItem.to}}</p>
-                              <p class="flgt-dptre">Depart: {{returnItem.departTime}}</p>
-                              <p class="flgt-arrive">Arrive: {{returnItem.arriveTime}}</p>
-                            </div>
-                          </div>
-
-                        </div>
-                        <div class="col-md-4">
-                          Image of flight
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
+          <ng-template #NoFlightsFound>
+            <p>No Flights Found for your search criteria! Please try again.</p>
+          </ng-template>
+          <ng-template #Welcome>
+            <h1>Welcome to Flight Search Engine!</h1>
+          </ng-template>
         </div>
       </div>
     </div>

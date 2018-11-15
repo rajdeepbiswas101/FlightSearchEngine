@@ -9,14 +9,15 @@ import { EventEmitter } from 'events';
   styleUrls: ['./search-page.component.css']
 })
 export class SearchPageComponent implements OnInit {
-  
+
   activeTabNo = 1;
   searchInfo: any[];
   flightListWay1: any[];
   flightListWay2: any[];
   rangeValue: number;
+  isPresent: boolean;
 
-  constructor() { 
+  constructor() {
     this.rangeValue = 10000;
   }
 
@@ -39,13 +40,15 @@ export class SearchPageComponent implements OnInit {
     }
   }
 
-  displayFlightList(event: any){
+  displayFlightList(event: any) {
+    this.isPresent = false;
     this.searchInfo = event[0]
     this.flightListWay1 = event[1];
     this.flightListWay2 = event[2];
   }
 
-  getPrice(price1:string, price2:string = "0"){
+  getPrice(price1: string, price2: string = "0") {
+    this.isPresent = true;
     return parseInt(price1) + parseInt(price2);
   }
 
