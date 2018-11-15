@@ -3,18 +3,30 @@
 
     <div class="form-group">
       <input list="airports" (onselect)="assignCityCode()" name="originAirports" formControlName="oCity" placeholder="Enter Origin City">
+      <div class="form-control-err" *ngIf="isFieldValid(searchDetails, 'oCity')">
+        <p>Required</p>
+      </div>
     </div>
 
     <div class="form-group">
       <input list="airports" name="destinationAirports" formControlName="dCity" placeholder="Enter Destination City">
+      <div class="form-control-err" *ngIf="isFieldValid(searchDetails, 'dCity')">
+        <p>Required</p>
+      </div>
     </div>
 
     <div class="form-group">
       <input type="text" onfocus="(this.type='date')" formControlName="dDate" onblur="(this.type='text')" name="departDate" placeholder="Departure Date">
+      <div class="form-control-err" *ngIf="isFieldValid(searchDetails, 'dDate')">
+        <p>Required</p>
+      </div>
     </div>
 
     <div class="form-group">
       <input type="text" *ngIf="activeTab===2" onfocus="(this.type='date')" formControlName="rDate" onblur="(this.type='text')" name="returnDate" placeholder="Return Date">
+      <div class="form-control-err" *ngIf="isFieldValid(searchDetails, 'rDate')">
+        <p>Required</p>
+      </div>
     </div>
 
     <div class="form-group">
@@ -26,6 +38,9 @@
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
+      <div class="form-control-err" *ngIf="isFieldValid(searchDetails, 'passenger')">
+        <p>Required</p>
+      </div>
     </div>
 
     <div class="btn-set">

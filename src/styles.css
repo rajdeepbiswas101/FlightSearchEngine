@@ -8,3 +8,14 @@ input, select {
     color: #8a7575;
     height: 30px
 }
+
+.form-control-err {
+    color: red;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: right;
+}
+
+.nav-item, button{
+    cursor: pointer;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FlightSearchService } from '../services/flight-search.service';
 import { map, filter } from 'rxjs/operators';
 import { forEach } from '@angular/router/src/utils/collection';
@@ -16,6 +16,12 @@ export class FlightSearchFormComponent implements OnInit {
   @Input()
   set activeTab(val: number) {
     this._activeTab = val;
+    if (this.activeTab === 2) {
+      this.searchDetails.controls.rDate.setValidators([Validators.required]);
+    } else {
+      this.searchDetails.controls.rDate.clearValidators();
+    }
+    this.searchDetails.controls.rDate.updateValueAndValidity()
     // this.searchDetails.reset();
   }
   get activeTab() {
@@ -62,26 +68,32 @@ export class FlightSearchFormComponent implements OnInit {
   }
 
   Submit() {
-    this.flightListWay1 = this.makeFlightList(this.searchDetails.controls['oCity'].value, this.searchDetails.controls['dCity'].value, this.searchDetails.controls['dDate'].value);
-    if (this.activeTab === 2) {
-      this.flightListWay2 = this.makeFlightList(this.searchDetails.controls['dCity'].value, this.searchDetails.controls['oCity'].value, this.searchDetails.controls['rDate'].value);
-    } else {
-      this.flightListWay2 = [];
+
+    this.searchDetails.markAsDirty();
+    if (this.searchDetails.valid) {
+
+      this.flightListWay1 = this.makeFlightList(this.searchDetails.controls['oCity'].value, this.searchDetails.controls['dCity'].value, this.searchDetails.controls['dDate'].value);
+      if (this.activeTab === 2) {
+        this.flightListWay2 = this.makeFlightList(this.searchDetails.controls['dCity'].value, this.searchDetails.controls['oCity'].value, this.searchDetails.controls['rDate'].value);
+      } else {
+        this.flightListWay2 = [];
+      }
+      let searchInfo = {
+        from: this.searchDetails.controls['oCity'].value,
+        to: this.searchDetails.controls['dCity'].value,
+        dDate: this.searchDetails.controls['dDate'].value,
+        rDate: this.searchDetails.controls['rDate'].value,
+        isReturn: this.activeTab === 2 ? true : false
+      };
+      let emitdata = [];
+      emitdata.push(searchInfo);
+      emitdata.push(this.flightListWay1);
+      emitdata.push(this.flightListWay2);
+      this.flightSearch.emit(emitdata);
     }
-    let searchInfo = {
-      from: this.searchDetails.controls['oCity'].value,
-      to: this.searchDetails.controls['dCity'].value,
-      dDate: this.searchDetails.controls['dDate'].value,
-      rDate: this.searchDetails.controls['rDate'].value,
-      isReturn: this.activeTab === 2 ? true : false
-    };
-    let emitdata = [];
-    emitdata.push(searchInfo);
-    emitdata.push(this.flightListWay1);
-    emitdata.push(this.flightListWay2);
-    this.flightSearch.emit(emitdata);
-    console.log(this.flightListWay1);
-    console.log(this.flightListWay2);
+
+    // console.log(this.flightListWay1);
+    // console.log(this.flightListWay2);
   }
 
   makeFlightList(origin: string, destination: string, date: string) {
@@ -97,15 +109,19 @@ export class FlightSearchFormComponent implements OnInit {
 
   initForm() {
     this.searchDetails = this.formBuilder.group({
-      oCity: [''],
-      dCity: [''],
-      dDate: [''],
+      oCity: ['', Validators.required],
+      dCity: ['', Validators.required],
+      dDate: ['', Validators.required],
       rDate: [''],
-      passenger: ['']
+      passenger: ['', Validators.required]
     })
   }
   assignCityCode() {
     console.log("Works");
+  }
+
+  isFieldValid(form: FormGroup, field: string) {
+    return !form.get(field).valid && (form.dirty || form.get(field).dirty);
   }
 
 }
