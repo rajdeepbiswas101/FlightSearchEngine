@@ -10,10 +10,12 @@ export class FlightSearchService {
     private http: HttpClient
   ) { }
 
+  // get list of airports
   getAirportList() {
     return this.http.get('../../assets/airports.json');
   }
 
+  //get list of flights
   getFlightList(){
     return this.http.get('../../assets/flights.json');
   }

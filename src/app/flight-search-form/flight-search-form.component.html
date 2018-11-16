@@ -48,7 +48,7 @@
     </div>
 
     <datalist id="airports">
-      <option *ngFor="let item of airports" (onselect)="assignCityCode()" value="{{item.code}}">{{item.name}}</option>
+      <option *ngFor="let item of airports" value="{{item.code}}">{{item.name}}</option>
     </datalist>
 
   </form>

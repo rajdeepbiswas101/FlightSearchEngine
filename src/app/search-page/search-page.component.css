@@ -2,10 +2,7 @@
   padding: 20px;
 }
 
-/* .row {
-    border: 2px solid;
-    margin: 10px 0;
-} */
+
 .main-container {
   border: 2px solid !important;
   border-collapse: collapse !important;
@@ -93,9 +90,6 @@ h2 {
   font-weight: 650;
 }
 
-/* .timing .row {
-  text-align: right
-} */
 .border-left {
   border-left: 2px solid;
   border-collapse: collapse;
@@ -121,7 +115,6 @@ img {
 p {
   font-size: 20px;
   font-weight: 400;
-  /* padding: 30px; */
 }
 
 h1 {

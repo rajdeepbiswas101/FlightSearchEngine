@@ -24,6 +24,7 @@ export class SearchPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Function to assign tab number on tab switch
   switchTab(key) {
     switch (key) {
       case 1:
@@ -40,6 +41,7 @@ export class SearchPageComponent implements OnInit {
     }
   }
 
+  // Emit from flight-search-form.component
   displayFlightList(event: any) {
     this.isPresent = false;
     this.searchInfo = event[0]
@@ -47,6 +49,7 @@ export class SearchPageComponent implements OnInit {
     this.flightListWay2 = event[2];
   }
 
+  // get the sum of prices ie Forward + Return
   getPrice(price1: string, price2: string = "0") {
     let sumPrices = parseInt(price1) + parseInt(price2);
     if (sumPrices <= this.rangeValue){

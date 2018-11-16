@@ -1,8 +1,6 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FlightSearchService } from '../services/flight-search.service';
-import { map, filter } from 'rxjs/operators';
-import { forEach } from '@angular/router/src/utils/collection';
 
 
 @Component({
@@ -21,8 +19,7 @@ export class FlightSearchFormComponent implements OnInit {
     } else {
       this.searchDetails.controls.rDate.clearValidators();
     }
-    this.searchDetails.controls.rDate.updateValueAndValidity()
-    // this.searchDetails.reset();
+    this.searchDetails.controls.rDate.updateValueAndValidity();
   }
   get activeTab() {
     return this._activeTab;
@@ -39,7 +36,6 @@ export class FlightSearchFormComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.initForm();
-    //this.searchDetails.reset();
   }
 
   ngOnInit() {
@@ -47,6 +43,7 @@ export class FlightSearchFormComponent implements OnInit {
     this.getFlightList();
   }
 
+  // get list of airports to show airport list when typed
   getAirportList() {
     this.flightSearchService.getAirportList().subscribe(
       resp => {
@@ -57,6 +54,7 @@ export class FlightSearchFormComponent implements OnInit {
     )
   }
 
+  // get list of flights as it is static content we are fetching it from JSON
   getFlightList() {
     this.flightSearchService.getFlightList().subscribe(
       resp => {
@@ -67,6 +65,7 @@ export class FlightSearchFormComponent implements OnInit {
     )
   }
 
+  // Submit button actions
   Submit() {
 
     this.searchDetails.markAsDirty();
@@ -91,11 +90,9 @@ export class FlightSearchFormComponent implements OnInit {
       emitdata.push(this.flightListWay2);
       this.flightSearch.emit(emitdata);
     }
-
-    // console.log(this.flightListWay1);
-    // console.log(this.flightListWay2);
   }
 
+  // search and filter flights according to conditions
   makeFlightList(origin: string, destination: string, date: string) {
     this.getFlightList();
     this.flightList = this.flights.data;
@@ -107,6 +104,7 @@ export class FlightSearchFormComponent implements OnInit {
     return flightListTemp;
   }
 
+  // initialize reative form
   initForm() {
     this.searchDetails = this.formBuilder.group({
       oCity: ['', Validators.required],
@@ -116,10 +114,8 @@ export class FlightSearchFormComponent implements OnInit {
       passenger: ['', Validators.required]
     })
   }
-  assignCityCode() {
-    console.log("Works");
-  }
 
+  // flied validation function
   isFieldValid(form: FormGroup, field: string) {
     return !form.get(field).valid && (form.dirty || form.get(field).dirty);
   }

@@ -64,31 +64,7 @@
           <div class="row col-md-12 timing">Depart: {{searchInfo.dDate | date}}</div>
           <div class="row col-md-12 timing">Return: {{searchInfo.rDate | date}}</div>
         </div>
-        <!-- <div class="col-md-12"> -->
-        <!-- <div class="col-md-6 places" *ngIf="searchInfo && searchInfo.isReturn == true">{{searchInfo.from}} >
-          {{searchInfo.to}} > {{searchInfo.from}}</div>
-        <div class="col-md-6 places" *ngIf="(searchInfo && searchInfo.isReturn == false)">{{searchInfo.from}} >
-          {{searchInfo.to}}</div>
-        <div class="col-md-6" *ngIf="searchInfo">
-          <div class="row col-md-12 timing">Depart: {{searchInfo.dDate | date}}</div>
-          <div class="row col-md-12 timing">Return: {{searchInfo.rDate | date}}</div>
-        </div> -->
-        <!-- <div *ngIf="searchInfo && searchInfo.isReturn == true">
-          <div class="col-md-6 places">{{searchInfo.from}} >
-            {{searchInfo.to}} > {{searchInfo.from}}</div>
-          <div class="col-md-6">
-            <div class="row col-md-12 timing">Depart: {{searchInfo.dDate | date}}</div>
-            <div class="row col-md-12 timing">Return: {{searchInfo.rDate | date}}</div>
-          </div>
-        </div>
-        <div *ngIf="searchInfo && searchInfo.isReturn == false">
-            <div class="col-md-6 places">{{searchInfo.from}} >
-              {{searchInfo.to}}</div>
-            <div class="col-md-6">
-              <div class="row col-md-12 timing">Depart: {{searchInfo.dDate | date}}</div>
-            </div>
-          </div> -->
-        <!-- </div> -->
+        
       </div>
       <div class="row border-bottom" *ngIf="searchInfo && searchInfo.isReturn == false">
         <div class="col-md-6 places">{{searchInfo.from}} >
@@ -96,31 +72,7 @@
         <div class="col-md-6">
           <div class="row col-md-12 timing">Depart: {{searchInfo.dDate | date}}</div>
         </div>
-        <!-- <div class="col-md-12"> -->
-        <!-- <div class="col-md-6 places" *ngIf="searchInfo && searchInfo.isReturn == true">{{searchInfo.from}} >
-            {{searchInfo.to}} > {{searchInfo.from}}</div>
-          <div class="col-md-6 places" *ngIf="(searchInfo && searchInfo.isReturn == false)">{{searchInfo.from}} >
-            {{searchInfo.to}}</div>
-          <div class="col-md-6" *ngIf="searchInfo">
-            <div class="row col-md-12 timing">Depart: {{searchInfo.dDate | date}}</div>
-            <div class="row col-md-12 timing">Return: {{searchInfo.rDate | date}}</div>
-          </div> -->
-        <!-- <div *ngIf="searchInfo && searchInfo.isReturn == true">
-            <div class="col-md-6 places">{{searchInfo.from}} >
-              {{searchInfo.to}} > {{searchInfo.from}}</div>
-            <div class="col-md-6">
-              <div class="row col-md-12 timing">Depart: {{searchInfo.dDate | date}}</div>
-              <div class="row col-md-12 timing">Return: {{searchInfo.rDate | date}}</div>
-            </div>
-          </div>
-          <div *ngIf="searchInfo && searchInfo.isReturn == false">
-              <div class="col-md-6 places">{{searchInfo.from}} >
-                {{searchInfo.to}}</div>
-              <div class="col-md-6">
-                <div class="row col-md-12 timing">Depart: {{searchInfo.dDate | date}}</div>
-              </div>
-            </div> -->
-        <!-- </div> -->
+        
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -176,8 +128,6 @@
             <div *ngIf="isPresent == false">
               <ng-container *ngTemplateOutlet="NoFlightsFound"></ng-container>
             </div>
-            
-            <!-- <NoFlightsFound *ngIf="isPresent==false"></NoFlightsFound> -->
           </div>
           <ng-template #OneWay>
             <div *ngIf="flightListWay1; else Welcome">
