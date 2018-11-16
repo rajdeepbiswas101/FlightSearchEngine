@@ -48,8 +48,11 @@ export class SearchPageComponent implements OnInit {
   }
 
   getPrice(price1: string, price2: string = "0") {
-    this.isPresent = true;
-    return parseInt(price1) + parseInt(price2);
+    let sumPrices = parseInt(price1) + parseInt(price2);
+    if (sumPrices <= this.rangeValue){
+      this.isPresent = true;
+    }
+    return sumPrices;
   }
 
 }

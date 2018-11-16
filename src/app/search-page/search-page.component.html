@@ -26,9 +26,7 @@
                 <app-flight-search-form (flightSearch)="displayFlightList($event)" [activeTab]="activeTabNo"></app-flight-search-form>
               </div>
               <div class="tab-pane" [class.active]="activeTabNo === 2">
-                <p>
-                  <app-flight-search-form (flightSearch)="displayFlightList($event)" [activeTab]="activeTabNo"></app-flight-search-form>
-                </p>
+                <app-flight-search-form (flightSearch)="displayFlightList($event)" [activeTab]="activeTabNo"></app-flight-search-form>
               </div>
             </div>
           </div>
@@ -175,7 +173,10 @@
                 </div>
               </div>
             </div>
-            <ng-container *ngTemplateOutlet = "NoFlightsFound"></ng-container>
+            <div *ngIf="isPresent == false">
+              <ng-container *ngTemplateOutlet="NoFlightsFound"></ng-container>
+            </div>
+            
             <!-- <NoFlightsFound *ngIf="isPresent==false"></NoFlightsFound> -->
           </div>
           <ng-template #OneWay>
@@ -216,7 +217,6 @@
                 </div>
               </div>
             </div>
-
           </ng-template>
           <ng-template #NoFlightsFound>
             <p>No Flights Found for your search criteria! Please try again.</p>
